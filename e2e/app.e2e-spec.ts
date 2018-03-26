@@ -1,6 +1,6 @@
 import { AppPage } from './app.po';
 
-describe('tram-parser-angular App', () => {
+describe('angular5-electron-template App', () => {
   let page: AppPage;
 
   beforeEach(() => {
