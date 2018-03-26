@@ -21,18 +21,17 @@ function createWindow() {
     // and load the index.html of the app.
     if (DEV) {
         mainWindow.loadURL(`http://${HOST}/`)
+        // Open the DevTools.
+        mainWindow.webContents.openDevTools()
     } else {
         mainWindow.loadURL(
             url.format({
-                pathname: path.join(__dirname, '/build/index.html'),
+                pathname: path.join(__dirname, '/dist/index.html'),
                 protocol: 'file:',
                 slashes: true,
             })
         )
     }
-
-    // Open the DevTools.
-    // mainWindow.webContents.openDevTools()
 
     // Emitted when the window is closed.
     mainWindow.on('closed', () => {

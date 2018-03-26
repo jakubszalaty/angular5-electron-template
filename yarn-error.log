@@ -19,17 +19,17 @@ npm manifest:
       "version": "0.0.0",
       "license": "MIT",
       "scripts": {
-          "dev":
-              "concurrently --kill-others \"npm run serve\" \"sleep 2 && NODE_ENV=development electron main.js\" --names \"webpack,electron\"",
-          "start": "NODE_ENV=production electron main.js",
+          "dev": "concurrently --kill-others \"npm run webpack\" \"sleep 5 && NODE_ENV=development electron main.js\" --names \"webpack,electron\"",
+          "prod": "NODE_ENV=production electron main.js",
           "prestart": "npm run build",
-          "prebuild": "mkdirp build && ncp src/assets build/assets",
           "ng": "ng",
           "serve": "ng serve",
-          "build": "ng build --prod",
-          "test": "ng test",
+          "build": "webpack",
+          "test": "karma start ./karma.conf.js",
           "lint": "ng lint",
-          "e2e": "ng e2e"
+          "e2e": "protractor ./protractor.conf.js",
+          "webpack": "webpack-dev-server --port=4200",
+          "pree2e": "webdriver-manager update --standalone false --gecko false --quiet"
       },
       "private": true,
       "dependencies": {
@@ -48,14 +48,25 @@ npm manifest:
           "zone.js": "^0.8.19"
       },
       "devDependencies": {
+          "@angular-devkit/core": "0.0.29",
           "@angular/cli": "1.6.8",
           "@angular/compiler-cli": "^5.2.0",
           "@angular/language-service": "^5.2.0",
+          "@ngtools/webpack": "1.9.8",
           "@types/jasmine": "~2.8.3",
           "@types/jasminewd2": "~2.0.2",
-          "@types/node": "~6.0.60",
+          "@types/node": "^9.6.0",
+          "autoprefixer": "^7.2.3",
+          "circular-dependency-plugin": "^4.2.1",
           "codelyzer": "^4.0.1",
           "concurrently": "^3.5.1",
+          "copy-webpack-plugin": "^4.1.1",
+          "css-loader": "^0.28.1",
+          "cssnano": "^3.10.0",
+          "exports-loader": "^0.6.3",
+          "file-loader": "^1.1.5",
+          "html-webpack-plugin": "^2.29.0",
+          "istanbul-instrumenter-loader": "^3.0.0",
           "jasmine-core": "~2.8.0",
           "jasmine-spec-reporter": "~4.2.1",
           "karma": "~2.0.0",
@@ -63,10 +74,22 @@ npm manifest:
           "karma-coverage-istanbul-reporter": "^1.2.1",
           "karma-jasmine": "~1.1.0",
           "karma-jasmine-html-reporter": "^0.2.2",
+          "less-loader": "^4.0.5",
+          "postcss-import": "^11.0.0",
+          "postcss-loader": "^2.0.10",
+          "postcss-url": "^7.1.2",
           "protractor": "~5.1.2",
+          "raw-loader": "^0.5.1",
+          "sass-loader": "^6.0.6",
+          "style-loader": "^0.13.1",
+          "stylus-loader": "^3.0.1",
           "ts-node": "~4.1.0",
           "tslint": "~5.9.1",
-          "typescript": "~2.5.3"
+          "typescript": "~2.5.3",
+          "uglifyjs-webpack-plugin": "^1.1.8",
+          "url-loader": "^0.6.2",
+          "webpack": "~3.10.0",
+          "webpack-dev-server": "~2.11.0"
       }
   }
 
@@ -266,13 +289,17 @@ Lockfile:
     dependencies:
       "@types/jasmine" "*"
   
-  "@types/node@^6.0.46", "@types/node@~6.0.60":
+  "@types/node@^6.0.46":
     version "6.0.103"
     resolved "https://registry.yarnpkg.com/@types/node/-/node-6.0.103.tgz#4fddb6c254756e98004039da4e4f4230d1e397ca"
   
   "@types/node@^8.0.24":
     version "8.10.0"
     resolved "https://registry.yarnpkg.com/@types/node/-/node-8.10.0.tgz#f5d649cc49af8ed6507d15dc6e9b43fe8b927540"
+  
+  "@types/node@^9.6.0":
+    version "9.6.0"
+    resolved "https://registry.yarnpkg.com/@types/node/-/node-9.6.0.tgz#d3480ee666df9784b1001a1872a2f6ccefb6c2d7"
   
   "@types/q@^0.0.32":
     version "0.0.32"
@@ -7928,7 +7955,7 @@ Trace:
   Error: Command failed.
   Exit code: 1
   Command: sh
-  Arguments: -c concurrently --kill-others "npm run serve" "sleep 2 && NODE_ENV=development electron main.js" --names "webpack,electron"
+  Arguments: -c concurrently --kill-others "npm run webpack" "sleep 5 && NODE_ENV=development electron main.js" --names "webpack,electron"
   Directory: /home/kuba/projects/tram-parser-angular
   Output:
   
