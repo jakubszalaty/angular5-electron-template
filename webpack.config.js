@@ -445,7 +445,7 @@ module.exports = {
                 }
             },
         }),
-        new BaseHrefWebpackPlugin({}),
+        new BaseHrefWebpackPlugin({ baseHref: './dist' }),
         new CommonsChunkPlugin({
             name: ['inline'],
             minChunks: null,

@@ -3,8 +3,8 @@
     "version": "0.0.0",
     "license": "MIT",
     "scripts": {
-        "dev": "concurrently --kill-others \"npm run webpack\" \"sleep 5 && NODE_ENV=development electron main.js\" --names \"webpack,electron\"",
-        "prod": "NODE_ENV=production electron main.js",
+        "dev": "concurrently --kill-others \"npm run webpack\" \"sleep 10 && NODE_ENV=development electron main.js\" --names \"webpack,electron\"",
+        "start": "NODE_ENV=production electron main.js",
         "prestart": "npm run build",
         "ng": "ng",
         "serve": "ng serve",
