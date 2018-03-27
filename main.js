@@ -6,6 +6,7 @@ const BrowserWindow = electron.BrowserWindow
 
 const path = require('path')
 const url = require('url')
+const fs = require('fs')
 
 const DEV = process.env.NODE_ENV === 'development'
 const HOST = `localhost:${process.env.PORT || 4200}`
@@ -24,9 +25,13 @@ function createWindow() {
         // Open the DevTools.
         mainWindow.webContents.openDevTools()
     } else {
+        const indexPathname = fs.existsSync(path.join(__dirname, './dist/index.html'))
+            ? './dist/index.html'
+            : './index.html'
+
         mainWindow.loadURL(
             url.format({
-                pathname: path.join(__dirname, '/dist/index.html'),
+                pathname: path.join(__dirname, indexPathname),
                 protocol: 'file:',
                 slashes: true,
             })
