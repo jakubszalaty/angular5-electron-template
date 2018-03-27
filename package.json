@@ -35,7 +35,6 @@
         "@angular/platform-browser-dynamic": "^5.2.0",
         "@angular/router": "^5.2.0",
         "core-js": "^2.4.1",
-        "electron": "^1.8.4",
         "rxjs": "^5.5.6",
         "zone.js": "^0.8.19"
     },
@@ -55,6 +54,7 @@
         "copy-webpack-plugin": "^4.1.1",
         "css-loader": "^0.28.1",
         "cssnano": "^3.10.0",
+        "electron": "^1.8.4",
         "electron-packager": "^11.2.0",
         "exports-loader": "^0.6.3",
         "file-loader": "^1.1.5",
