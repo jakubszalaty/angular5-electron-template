@@ -1,6 +1,49 @@
-<h2>File list</h2>
-<ul>
-  <li *ngFor="let file of fileList">
-    {{ file }}
-  </li>
-</ul>
+<mat-toolbar class="app-toolbar" color="primary">
+    <mat-toolbar-row>
+        <span>
+            <button mat-icon-button (click)="sidenav.toggle()">
+                <mat-icon>menu</mat-icon>
+            </button>
+        </span>
+        <span>App</span>
+    </mat-toolbar-row>
+
+</mat-toolbar>
+
+<mat-sidenav-container class="app-sidenav-container">
+    <mat-sidenav class="app-sidenav" #sidenav [fixedInViewport]="true" mode="over" [(opened)]="opened">
+
+        <mat-toolbar class="app-toolbar-top" color="primary">
+            <mat-toolbar-row></mat-toolbar-row>
+            <mat-toolbar-row></mat-toolbar-row>
+            <mat-toolbar-row>
+                <p>Hello!</p>
+            </mat-toolbar-row>
+        </mat-toolbar>
+
+        <mat-nav-list class="app-toolbar-list">
+            <a mat-list-item>
+                <mat-icon mat-list-icon>home</mat-icon>
+                <p mat-line>Main</p>
+            </a>
+        </mat-nav-list>
+
+    </mat-sidenav>
+
+    <mat-sidenav-content class="app-sidenav-content">
+        <div class="app-main-content">
+            <!-- <router-outlet></router-outlet> -->
+            <mat-card style="margin: 16px 16px 0;">
+                <mat-card-title>
+                    <p>File list</p>
+                </mat-card-title>
+                <mat-card-content>
+                    <mat-list role="list">
+                        <mat-list-item role="listitem" *ngFor="let file of fileList">{{ file }}</mat-list-item>
+                    </mat-list>
+                </mat-card-content>
+            </mat-card>
+
+        </div>
+    </mat-sidenav-content>
+</mat-sidenav-container>

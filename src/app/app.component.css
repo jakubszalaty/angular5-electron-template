@@ -1,0 +1,39 @@
+.app-sidenav-container {
+    padding-top: 56px;
+}
+
+@media (min-width: 600px) {
+    .app-sidenav-container {
+        padding-top: 64px;
+    }
+}
+
+.app-sidenav-content {
+    background-color: #eee;
+}
+
+.app-main-content {
+    padding-bottom: 72px;
+}
+
+.app-sidenav {
+    width: 90vw;
+    max-width: 256px;
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+}
+
+.app-toolbar {
+    position: fixed;
+    top: 0;
+    z-index: 10;
+}
+
+.app-toolbar-top {
+    min-height: 168px;
+}
+
+.app-toolbar-list {
+    flex-grow: 1;
+}

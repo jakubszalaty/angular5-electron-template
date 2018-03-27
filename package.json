@@ -6,8 +6,7 @@
     "main": "main.js",
     "private": true,
     "scripts": {
-        "dev":
-            "concurrently --kill-others \"npm run webpack\" \"sleep 10 && NODE_ENV=development electron main.js\" --names \"webpack,electron\"",
+        "dev": "concurrently --kill-others \"npm run webpack\" \"sleep 10 && NODE_ENV=development electron main.js\" --names \"webpack,electron\"",
         "start": "NODE_ENV=production electron main.js",
         "prestart": "npm run build",
         "ng": "ng",
@@ -18,19 +17,19 @@
         "e2e": "protractor ./protractor.conf.js",
         "webpack": "webpack-dev-server --port=4200",
         "pree2e": "webdriver-manager update --standalone false --gecko false --quiet",
-        "build:electron":
-            "npm run build && cp package.json main.js dist && electron-packager ./dist --out=build --asar --overwrite --prune --arch=x64",
-        "build:electron:linux":
-            "npm run build:electron -- --icon ./src/assets/icons/android-chrome-192x192.png --platform=linux",
+        "build:electron": "npm run build && cp package.json main.js dist && electron-packager ./dist --out=build --asar --overwrite --prune --arch=x64",
+        "build:electron:linux": "npm run build:electron -- --icon ./src/assets/icons/android-chrome-192x192.png --platform=linux",
         "build:electron:win": "npm run build:electron -- --icon ./src/favicon.ico --platform=win32"
     },
     "dependencies": {
-        "@angular/animations": "^5.2.0",
+        "@angular/animations": "^5.2.9",
+        "@angular/cdk": "^5.2.4",
         "@angular/common": "^5.2.0",
         "@angular/compiler": "^5.2.0",
         "@angular/core": "^5.2.0",
         "@angular/forms": "^5.2.0",
         "@angular/http": "^5.2.0",
+        "@angular/material": "^5.2.4",
         "@angular/platform-browser": "^5.2.0",
         "@angular/platform-browser-dynamic": "^5.2.0",
         "@angular/router": "^5.2.0",
