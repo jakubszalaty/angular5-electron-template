@@ -9,6 +9,7 @@ import * as fs from 'fs'
 export class AppComponent implements OnInit {
     title = 'app'
     fileList: string[]
+    opened = false
     ngOnInit(): void {
         this.fileList = fs.readdirSync('.')
     }
